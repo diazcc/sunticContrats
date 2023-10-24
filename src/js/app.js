@@ -2,6 +2,7 @@
   setClassDefault();
   clickOpenMenu();
   openViewNewContrat();
+  clickSendForm();
 })();
 
 function setClassDefault() {
@@ -42,4 +43,43 @@ function openViewNewContrat() {
       classNewContrat.className = "viewNewContrat viewNewContrat--hidde";
     }
   });
+}
+
+function clickSendForm() {
+  formContrat = document.getElementById("formContrat");
+  formContrat.addEventListener("submit", function (event) {
+    validationForm(event);
+  });
+}
+
+function validationForm(event) {
+  alertText = document.getElementById("alertText");
+  inputCodCont = document.getElementById("inputCodCont");
+  selectCustomer = document.getElementById("selectCustomer");
+  dateCont = document.getElementById("dateCont");
+  priceCont = document.getElementById("priceCont");
+  selectStateContrat = document.getElementById("selectStateContrat");
+  stateForm = false;
+  console.log(selectCustomer.value);
+  if (inputCodCont.value.trim() == "") {
+    stateForm = false;
+  } else if (
+    selectCustomer.value == "seleccionar" ||
+    selectCustomer.value.trim() == ""
+  ) {
+    console.log(selectCustomer.value);
+    stateForm = false;
+  } else if (dateCont.value.trim() == "") {
+    stateForm = false;
+  } else if (priceCont.value.trim() == "") {
+    stateForm = false;
+  } else {
+    stateForm = true;
+  }
+
+  if (stateForm) {
+  } else {
+    event.preventDefault();
+    alertText.innerHTML = "Algunos campos estan vacio o no corresponde al tipo de dato";
+  }
 }

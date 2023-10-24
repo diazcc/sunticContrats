@@ -16,27 +16,28 @@ require_once "../controller/setTableContrats.php";
 
 <body>
     <section class="viewNewContrat--hidde" id="viewNewContrat">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="formContrat" class="formNewContrat">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="formContrat" class="formNewContrat" id="formContrat">
             <h1 class="titleForm">Crear contrato</h1>
             <label for="">Codigo de contrato</label>
-            <input name="codCont" type="number" value="<?php echo mt_rand(10000, 99999); ?>" class="inputTextNumber">
+            <input name="codCont" type="number" value="<?php echo mt_rand(10000, 99999); ?>" class="inputTextNumber" id="inputCodCont">
             <label for="selectCustomer">Seleccionar cliente</label>
             <select id="selectCustomer" name="nameCust" class="inputTextNumber">
-                <option value="">seleccionar</option>
+                <option value="seleccionar" selected>seleccionar</option>
                 <?php
                 echo $nombreCliente;
                 ?>
             </select>
-            <label for="fecha">Fecha de activacion:</label>
-            <input type="date" id="fecha" name="dateActCont" class="inputTextNumber">
-            <label for="fecha">Valor: </label>
-            <input type="number" placeholder="$00" name="priceCont" class="inputTextNumber">
+            <label for="">Fecha de activacion:</label>
+            <input type="date" id="dateCont" name="dateActCont" class="inputTextNumber">
+            <label for="">Valor: </label>
+            <input type="number" placeholder="$00" name="priceCont" class="inputTextNumber" id="priceCont">
             <label for="stateContrat">Estado:</label>
             <select name="stateCont" id="selectStateContrat" class="inputTextNumber">
                 <option>Activo</option>
                 <option>Inactivo</option>
             </select>
-            <input type="submit" value="Crear" name="sendContrat" class="buttonSend">
+            <p id="alertText" class="alertText"></p>
+            <input type="submit" value="Crear" name="sendContrat" class="buttonSend" id="buttonSend">
         </form>
         <?php
         require_once "../controller/newContrat.php";
@@ -46,8 +47,7 @@ require_once "../controller/setTableContrats.php";
         <ul class="navbar">
             <li class="titleNavbar">Menu</li>
             <li class="optionNavbar" id="newContrat">Crear contrato</li>
-            <li class="optionNavbar">Crear contrato</li>
-            <li class="optionNavbar">Crear contrato</li>
+            <li class="optionNavbar">Hacer transferencias</li>
         </ul>
     </nav>
     <main class="wrapper">

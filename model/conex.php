@@ -64,10 +64,13 @@ class Database
         $contrats = array();
         $query =  "SELECT * FROM contrat";
         $response = $this->conexion->query($query);
-
-        while ($row = $response->fetch_assoc()) {
-            $contrats[] = $row;
+        if($response){
+            while ($row = $response->fetch_assoc()) {
+                $contrats[] = $row;
+            }
+            return $contrats;
+        }else{
+            echo null;
         }
-        return $contrats;
     }
 }
